@@ -1,0 +1,242 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "State",
+  "type": "object",
+  "required": [
+    "arena_name",
+    "arena_state",
+    "classes",
+    "factory",
+    "known_snip_20",
+    "secret_entropy"
+  ],
+  "properties": {
+    "arena_name": {
+      "type": "string"
+    },
+    "arena_state": {
+      "$ref": "#/definitions/ArenaState"
+    },
+    "classes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Class"
+      }
+    },
+    "factory": {
+      "$ref": "#/definitions/FactoryInfo"
+    },
+    "known_snip_20": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/HumanAddr"
+      }
+    },
+    "secret_entropy": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "format": "uint8",
+          "minimum": 0.0
+        },
+        "maxItems": 8,
+        "minItems": 8
+      }
+    }
+  },
+  "definitions": {
+    "Action": {
+      "type": "object",
+      "required": [
+        "name",
+        "preparation_needed"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "preparation_needed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ArenaState": {
+      "type": "object",
+      "required": [
+        "rounds",
+        "tokens_locked"
+      ],
+      "properties": {
+        "player1": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/HumanAddr"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "player1_class_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "player2": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/HumanAddr"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "player2_class_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rounds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Round"
+          }
+        },
+        "tokens_locked": {
+          "$ref": "#/definitions/Uint128"
+        }
+      }
+    },
+    "Class": {
+      "type": "object",
+      "required": [
+        "actions",
+        "base_attack",
+        "base_dodge_chance",
+        "base_hp",
+        "name"
+      ],
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Action"
+          }
+        },
+        "base_attack": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "base_dodge_chance": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "base_hp": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "FactoryInfo": {
+      "type": "object",
+      "required": [
+        "auth_key",
+        "contract_address",
+        "contract_hash"
+      ],
+      "properties": {
+        "auth_key": {
+          "type": "string"
+        },
+        "contract_address": {
+          "$ref": "#/definitions/HumanAddr"
+        },
+        "contract_hash": {
+          "type": "string"
+        }
+      }
+    },
+    "HumanAddr": {
+      "type": "string"
+    },
+    "Round": {
+      "type": "object",
+      "required": [
+        "number",
+        "status"
+      ],
+      "properties": {
+        "number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "player1_action_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "player1_attack_level": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "player1_hp": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "player1_preparation": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "player2_action_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "player2_attack_level": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "player2_hp": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "player2_preparation": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "Uint128": {
+      "type": "string"
+    }
+  }
+}

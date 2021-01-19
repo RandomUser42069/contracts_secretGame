@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "InitMsg",
+  "type": "object",
+  "required": [
+    "entropy",
+    "factory_address",
+    "factory_hash",
+    "factory_key",
+    "name",
+    "snip20_contract_code_address",
+    "snip20_contract_code_hash"
+  ],
+  "properties": {
+    "entropy": {
+      "type": "integer",
+      "format": "uint64",
+      "minimum": 0.0
+    },
+    "factory_address": {
+      "$ref": "#/definitions/HumanAddr"
+    },
+    "factory_hash": {
+      "type": "string"
+    },
+    "factory_key": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "snip20_contract_code_address": {
+      "$ref": "#/definitions/HumanAddr"
+    },
+    "snip20_contract_code_hash": {
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "HumanAddr": {
+      "type": "string"
+    }
+  }
+}

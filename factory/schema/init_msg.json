@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "InitMsg",
+  "type": "object",
+  "required": [
+    "arena_contracts_code_hash",
+    "arena_contracts_code_id",
+    "entropy",
+    "snip20_contract_code_address",
+    "snip20_contract_code_hash"
+  ],
+  "properties": {
+    "arena_contracts_code_hash": {
+      "type": "string"
+    },
+    "arena_contracts_code_id": {
+      "type": "integer",
+      "format": "uint64",
+      "minimum": 0.0
+    },
+    "entropy": {
+      "type": "string"
+    },
+    "snip20_contract_code_address": {
+      "$ref": "#/definitions/HumanAddr"
+    },
+    "snip20_contract_code_hash": {
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "HumanAddr": {
+      "type": "string"
+    }
+  }
+}

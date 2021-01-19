@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HandleMsg",
+  "anyOf": [
+    {
+      "type": "object",
+      "required": [
+        "create_viewing_key"
+      ],
+      "properties": {
+        "create_viewing_key": {
+          "type": "object",
+          "required": [
+            "entropy"
+          ],
+          "properties": {
+            "entropy": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "change_arena_contract_code_id"
+      ],
+      "properties": {
+        "change_arena_contract_code_id": {
+          "type": "object",
+          "required": [
+            "code_hash",
+            "code_id"
+          ],
+          "properties": {
+            "code_hash": {
+              "type": "string"
+            },
+            "code_id": {
+              "type": "integer",
+              "format": "uint64",
+              "minimum": 0.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "new_arena_instanciate"
+      ],
+      "properties": {
+        "new_arena_instanciate": {
+          "type": "object",
+          "required": [
+            "entropy",
+            "name"
+          ],
+          "properties": {
+            "entropy": {
+              "type": "integer",
+              "format": "uint64",
+              "minimum": 0.0
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "init_call_back_from_arena_to_factory"
+      ],
+      "properties": {
+        "init_call_back_from_arena_to_factory": {
+          "type": "object",
+          "required": [
+            "auth_key",
+            "contract_address"
+          ],
+          "properties": {
+            "auth_key": {
+              "type": "string"
+            },
+            "contract_address": {
+              "$ref": "#/definitions/HumanAddr"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "HumanAddr": {
+      "type": "string"
+    }
+  }
+}
